@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Для тебя 💌</title>
+  <meta name="theme-color" content="#161a3d">
+
+  <!-- Pixel-шрифт для UI/заголовков + рукописный для текста письма + аккуратный sans для мелочей -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Фоновые пиксельные сердечки и звёзды, генерируются в script.js -->
+  <div class="bg-decor" id="bgDecor" aria-hidden="true"></div>
+
+  <!-- Ползунок громкости. Всегда виден поверх всего, и на конверте, и в книжке -->
+  <div class="volume-control" id="volumeControl">
+    <span class="volume-icon" aria-hidden="true">♪</span>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.35" aria-label="Громкость музыки">
+  </div>
+
+  <!-- ===================== ЭКРАН 1: КОНВЕРТ ===================== -->
+  <section class="screen intro-screen" id="introScreen">
+
+    <div class="intro-inner">
+      <div class="envelope-stage">
+        <div class="envelope-glow" id="envelopeGlow" aria-hidden="true"></div>
+
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-letter-peek" id="envelopeLetterPeek"></div>
+          <div class="envelope-front-left"></div>
+          <div class="envelope-front-right"></div>
+          <div class="envelope-flap" id="envelopeFlap">
+            <button class="heart-seal" id="heartSeal" aria-label="Открыть конверт">
+              <span class="heart-seal-char" aria-hidden="true">❤</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-buttons">
+        <button class="btn btn-open" id="openBtn">Открыть</button>
+        <button class="btn btn-no" id="noBtn" type="button">Не открывать</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ЭКРАН 2: КНИЖКА ===================== -->
+  <section class="screen book-screen" id="bookScreen" aria-hidden="true">
+    <button class="back-to-envelope" id="backToEnvelope" type="button">
+      ← назад
+    </button>
+    <div class="book-wrap">
+      <div class="book-aura" aria-hidden="true"></div>
+
+      <div class="book" id="book">
+        <div class="book-spine" aria-hidden="true"></div>
+
+        <div class="page page-left" id="pageLeft">
+          <div class="page-shadow-inner" aria-hidden="true"></div>
+          <div class="page-content" id="pageLeftContent"></div>
+        </div>
+
+        <div class="page page-right" id="pageRight">
+          <div class="page-shadow-inner" aria-hidden="true"></div>
+          <div class="page-content" id="pageRightContent"></div>
+        </div>
+
+        <!-- сюда динамически вставляется "летящая" страница для анимации перелистывания -->
+        <div class="flip-layer" id="flipLayer" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="book-nav">
+      <button class="arrow arrow-back" id="arrowBack" aria-label="Предыдущая страница">
+        <span class="arrow-glyph">❮</span>
+      </button>
+      <div class="page-indicator" id="pageIndicator">1 / 1</div>
+      <button class="arrow arrow-forward" id="arrowForward" aria-label="Следующая страница">
+        <span class="arrow-glyph">❯</span>
+      </button>
+    </div>
+  </section>
+
+  <div class="photo-modal" id="photoModal" aria-hidden="true">
+    <button class="photo-modal-close" id="photoModalClose">×</button>
+    <div class="photo-modal-hearts" id="photoModalHearts"></div>
+    <img id="photoModalImg" alt="Фото">
+  </div>
+  <audio id="bruhSound" src="sounds/bruh.wav" preload="auto"></audio>
+  <audio id="bgMusic" loop preload="none"></audio>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
