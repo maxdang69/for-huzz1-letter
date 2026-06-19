@@ -34,8 +34,8 @@ iu em,
 // Список фото в порядке показа. Дописывай сюда новые пути вручную —
 // GitHub Pages не даёт получить список файлов папки автоматически.
 // Поддерживаются .jpg, .jpeg, .png, .webp — просто укажи нужное расширение.
-const PHOTO_EXTENSIONS = ["jpg", "jpeg", "png", "webp"];
-const MAX_PHOTOS_TO_CHECK = 50;
+const PHOTO_EXTENSIONS = ["jpg", "png"];
+const MAX_PHOTOS_TO_CHECK = 10;
 
 let photos = [];
 
@@ -529,16 +529,21 @@ function bindBookNav() {
   }, { passive: true });
 }
 
-async function showBookScreen() {
+function showBookScreen() {
   introScreen.style.display = "none";
   bookScreen.removeAttribute("aria-hidden");
   bookScreen.classList.add("active");
 
-  await loadPhotosAutomatically();
-
+  photos = [];
   buildSpreads();
   currentSpread = 0;
   renderCurrentSpread();
+
+  loadPhotosAutomatically().then(() => {
+    buildSpreads();
+    currentSpread = 0;
+    renderCurrentSpread();
+  });
 }
 
 
