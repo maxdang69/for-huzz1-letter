@@ -36,7 +36,7 @@ iu em,
 // GitHub Pages не даёт получить список файлов папки автоматически.
 // Поддерживаются .jpg, .jpeg, .png, .webp — просто укажи нужное расширение.
 const PHOTO_EXTENSIONS = ["jpg", "png"];
-const MAX_PHOTOS_TO_CHECK = 10;
+const MAX_PHOTOS_TO_CHECK = 30;
 
 let photos = [];
 
